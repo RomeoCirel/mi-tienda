@@ -2,10 +2,11 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { BellIcon, Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import profile from '../assets/img/profile.png'
 
 const navigation = [
-  { name: 'Categorias', href: '/categorias', current: true },
+  { name: 'Categorias', href: '/categorias', current: false },
   { name: 'Ofertas', href: '/ofertas', current: false },
   { name: 'Mis Compras', href: '/mis-compras', current: false },
 ]
@@ -16,7 +17,7 @@ function classNames(...classes) {
 
 export default function Nav() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-700">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -34,16 +35,11 @@ export default function Nav() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <Link to="/">
-                    <img
-                      className="block lg:hidden h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500"
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500"
-                      alt="Workflow"
-                    />
+                    <span
+                      className="block h-8 w-auto text-white font-bold text-2xl"
+                    >
+                      MT
+                    </span>
                   </Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
@@ -66,20 +62,29 @@ export default function Nav() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  className="bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-
-                {/* Profile dropdown */}
+                <button
+                  type="button"
+                  className="inline-flex relative bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                >
+                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                  <span 
+                    className="inline-flex absolute -top-1 -right-1 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full  "
+                  >
+                    20
+                  </span>
+                </button>
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <Menu.Button className="inline-flex relative items-center bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={profile}
                         alt=""
                       />
                     </Menu.Button>
@@ -100,7 +105,7 @@ export default function Nav() {
                             to="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Mi Perfil
                           </Link>
                         )}
                       </Menu.Item>
@@ -110,7 +115,7 @@ export default function Nav() {
                             to="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Configuraciones
                           </Link>
                         )}
                       </Menu.Item>
@@ -120,7 +125,7 @@ export default function Nav() {
                             to="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            Salir
                           </Link>
                         )}
                       </Menu.Item>
