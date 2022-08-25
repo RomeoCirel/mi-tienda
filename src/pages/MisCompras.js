@@ -1,8 +1,10 @@
-import React from 'react'
-
-export const MisCompras = () => {
+import React, {useContext} from 'react'
+import {RouteContext} from '../contexts/RouteContext';
+export const MisCompras = ({ setSection }) => {
+  const [, setSectionName] = useContext(RouteContext)
+  setSectionName('Mis Compras')
   return (
-    <div>MisCompras</div>
+    <div></div>
   )
 }
 
