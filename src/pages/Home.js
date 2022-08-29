@@ -5,7 +5,7 @@ import { ProductContext } from "../contexts/ProductContext";
 export default function Home() {
   const [productList] = useContext(ProductContext);
   // HACER: mover esto a ProductContext
-  const getProductosPopulares = (lista, max = 8) => {
+  const getProductosPopulares = (lista, max = 4) => {
     const ids = [];
     const maxId = 113;
 
