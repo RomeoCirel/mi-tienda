@@ -1,6 +1,7 @@
-import React, { useContext, Fragment } from "react";
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 import { RouteContext } from "../contexts/RouteContext";
 
 export const LayoutPrincipal = () => {
@@ -9,12 +10,13 @@ export const LayoutPrincipal = () => {
     <>
       {sectionName !== null && sectionName !== undefined ? (
         <Header sectionName={sectionName} />
-      ) : (
-        ""
-      )}
-      <div className="container mx-auto px-4">
-        <Outlet />
+      ) : null}
+      <div className="bg-stone-400">
+        <div className="container mx-auto shadow-2xl shadow-gray-300 bg-slate-50">
+          <Outlet />
+        </div>
       </div>
+      <Footer />
     </>
   );
 };
