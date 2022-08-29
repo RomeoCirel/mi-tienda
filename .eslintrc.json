@@ -21,6 +21,10 @@
     ],
     "rules": {
         "prettier/prettier": ["error"],
-        "react/function-component-definition": 0
+        "react/function-component-definition": 0,
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
     }
 }
