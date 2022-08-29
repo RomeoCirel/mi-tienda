@@ -1,21 +1,27 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Link } from 'react-router-dom';
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import profile from '../assets/img/profile.png'
+import { Fragment, useContext } from "react";
+import { Link } from "react-router-dom";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import {
+  BellIcon,
+  Bars3Icon,
+  XMarkIcon,
+  ShoppingCartIcon
+} from "@heroicons/react/24/outline";
+import profile from "../assets/img/profile.png";
+import { CartContext } from "../contexts/CartContext";
 
 const navigation = [
-  { name: 'Categorias', href: '/categorias', current: false },
-  { name: 'Ofertas', href: '/ofertas', current: false },
-  { name: 'Mis Compras', href: '/mis-compras', current: false },
-]
+  { name: "Categorias", href: "/categorias", current: false },
+  { name: "Ofertas", href: "/ofertas", current: false },
+  { name: "Mis Compras", href: "/mis-compras", current: false }
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Nav() {
+  const { setOpen, cart } = useContext(CartContext);
   return (
     <Disclosure as="nav" className="bg-gray-700">
       {({ open }) => (
@@ -35,9 +41,7 @@ export default function Nav() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <Link to="/">
-                    <span
-                      className="block h-8 w-auto text-white font-bold text-2xl"
-                    >
+                    <span className="block h-8 w-auto text-white font-bold text-2xl">
                       MT
                     </span>
                   </Link>
@@ -49,8 +53,10 @@ export default function Nav() {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "px-3 py-2 rounded-md text-sm font-medium"
                         )}
                       >
                         {item.name}
@@ -68,14 +74,13 @@ export default function Nav() {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <button
+                  onClick={() => setOpen(true)}
                   type="button"
                   className="inline-flex relative bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                  <span 
-                    className="inline-flex absolute -top-1 -right-1 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full  "
-                  >
-                    20
+                  <span className="inline-flex absolute -top-1 -right-1 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full  ">
+                    {cart.length}
                   </span>
                 </button>
                 <Menu as="div" className="ml-3 relative">
@@ -102,8 +107,11 @@ export default function Nav() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            to="/perfil"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Mi Perfil
                           </Link>
@@ -112,8 +120,11 @@ export default function Nav() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            to="/configs"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Configuraciones
                           </Link>
@@ -122,8 +133,11 @@ export default function Nav() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            to="/logout"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Salir
                           </Link>
@@ -145,8 +159,10 @@ export default function Nav() {
                     as="a"
                     to={item.href}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block px-3 py-2 rounded-md text-base font-medium'
+                      item.current
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      "block px-3 py-2 rounded-md text-base font-medium"
                     )}
                   >
                     {item.name}
@@ -158,5 +174,5 @@ export default function Nav() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
