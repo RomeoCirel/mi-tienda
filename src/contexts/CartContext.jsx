@@ -7,18 +7,19 @@ export const CartContext = createContext(null);
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [open, setOpen] = useState(false);
-  const addToCart = (product, quantity = 1) => {
+
+  const addToCart = (product, quantity) => {
     if (cart.some((el) => el.product.id === product.id)) {
       const index = cart.findIndex((el) => el.product.id === product.id);
       const item = cart[index];
-      item.quantity += quantity;
+      item.quantity = quantity;
       item.subTotal = item.quantity * item.product.price;
       const newCart = [...cart];
       newCart.splice(index, 1, item);
 
       setCart([...newCart]);
     } else {
-      const item = { product, quantity: 1, subTotal: product.price };
+      const item = { product, quantity, subTotal: product.price * quantity };
       setCart([...cart, item]);
     }
   };
