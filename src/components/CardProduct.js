@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { PropTypes } from "prop-types";
 import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import {
   HeartIcon as HeartSolid,
   ShoppingCartIcon as CartSolid,
-  EyeIcon
+  EyeIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  XCircleIcon
 } from "@heroicons/react/24/solid";
 
 export const CardProduct = ({
@@ -13,25 +17,50 @@ export const CardProduct = ({
   name,
   description,
   price,
+  stock,
   inOfert,
   percentOff,
   inFavorites,
   inCart,
-  outOfStock,
   addToCart,
   addToFavorites,
   deleteOfFavorites,
   goToDetail
 }) => {
+  const [showCount, setShowCont] = useState(false);
+  const [qty, setQty] = useState(1);
+
+  const handleClickAddBtn = () => {
+    if (qty < stock) {
+      setQty(qty + 1);
+    }
+  };
+
+  const handleClickMinusBtn = () => {
+    if (qty > 0) {
+      setQty(qty - 1);
+    }
+  };
+
+  const resetQty = () => setQty(1);
+
+  const cancelAddToCart = () => {
+    setShowCont(false);
+    resetQty();
+  };
   const producto = {
     id,
     image,
     name,
     description,
-    price
+    price,
+    stock
   };
+
   const addToCartLocal = () => {
-    addToCart(producto);
+    addToCart(producto, qty);
+    setShowCont(false);
+    resetQty();
   };
 
   const addToFavoritesLocal = () => {
@@ -57,16 +86,22 @@ export const CardProduct = ({
               OFERTA {`${percentOff}%`}
             </div>
           ) : null}
-          {outOfStock ? (
+          {stock === 0 ? (
             <div className="badge border-none bg-red-500 text-xs text-gray-50 font-semibold">
               SIN STOCK
             </div>
           ) : null}
         </div>
         <h3 className="card-title text-sm font-semibold">{name}</h3>
+
         {description ? <p className="p-2 text-justify">{description}</p> : null}
         <div className="card-actions grid grid-cols-6 gap-1 bottom-0">
-          <div className="font-bold col-span-3">$ {price}</div>
+          <div className="font-bold col-span-3">
+            ${" "}
+            {price.toLocaleString("es-IN", {
+              minimumFractionDigits: 0
+            })}
+          </div>
           <div>
             <button
               type="button"
@@ -95,18 +130,71 @@ export const CardProduct = ({
             </button>
           </div>
           <div>
-            <button type="button" className="btn btn-link btn-sm border-none">
-              {inCart ? (
+            {inCart ? (
+              <button type="button" className="btn btn-link btn-sm border-none">
                 <CartSolid className="h-5 w-5 hover:text-gray-500" />
-              ) : (
+              </button>
+            ) : null}
+            {!inCart && !showCount ? (
+              <button type="button" className="btn btn-link btn-sm border-none">
                 <ShoppingCartIcon
-                  className="h-5 w-5 hover:text-gray-500 hover:text-primary"
-                  onClick={() => addToCartLocal()}
+                  className=" h-5 w-5 hover:text-gray-500 hover:text-primary"
+                  onClick={() => setShowCont(true)}
                 />
-              )}
-            </button>
+              </button>
+            ) : null}
+            {!inCart && showCount ? (
+              <button
+                type="button"
+                className="text-red-500 btn-link btn-sm border-none"
+                onClick={() => cancelAddToCart()}
+              >
+                <XCircleIcon className="h-5 w-5" />
+              </button>
+            ) : null}
           </div>
         </div>
+        {showCount ? (
+          <div className="card-actions grid grid-cols-6 gap-1 bottom-0">
+            <div className="btn-group col-span-4  font-bold text-lg">
+              <button
+                type="button"
+                className="p-1 btn-link w-8"
+                onClick={() => handleClickMinusBtn()}
+              >
+                <ChevronDownIcon className="text-gray-800" />
+              </button>
+              <button
+                type="button"
+                className="btn-link w-8 bg-transparent hover:bg-transparent border-none"
+              >
+                {qty}
+              </button>
+              <button
+                type="button"
+                className="p-1 btn-link w-8"
+                onClick={() => handleClickAddBtn()}
+              >
+                <ChevronUpIcon className="text-gray-800" />
+              </button>
+              <div className="col-span-4 mt-1">
+                <h4 className="text-sm font-normal text-yellow-600">
+                  ( {stock} ) disponibles
+                </h4>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => addToCartLocal()}
+                disabled={qty === 0}
+              >
+                <ShoppingCartIcon className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -116,7 +204,6 @@ CardProduct.defaultProps = {
   percentOff: "",
   inFavorites: false,
   inCart: false,
-  outOfStock: false,
   addToCart: (id) => {
     console.log(`agrgar al carrito: ${id}`);
   },
@@ -134,12 +221,12 @@ CardProduct.defaultProps = {
 CardProduct.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  stock: PropTypes.number.isRequired,
   inOfert: PropTypes.bool,
   percentOff: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   inFavorites: PropTypes.bool,
   inCart: PropTypes.bool,
-  outOfStock: PropTypes.bool,
   addToCart: PropTypes.func,
   addToFavorites: PropTypes.func,
   deleteOfFavorites: PropTypes.func,
