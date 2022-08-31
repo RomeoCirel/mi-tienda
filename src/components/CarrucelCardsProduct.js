@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { CardProduct } from "./CardProduct";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 export const CarrucelCardsProduct = ({ products }) => {
   const { addToCart } = useContext(CartContext);
@@ -13,6 +13,7 @@ export const CarrucelCardsProduct = ({ products }) => {
           id={element.id}
           name={element.name}
           price={element.price}
+          stock={element.stock}
           image={element.image}
           inCart={element.inCart}
           inFavorites={element.inFavorites}
