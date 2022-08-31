@@ -1,12 +1,12 @@
 import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
   // eslint-disable-next-line spaced-comment
-  const { open, setOpen, cart, editQuantity, deleteOfCart } =
+  const { open, setOpen, cart, editQuantity, deleteOfCart, cartTotal } =
     useContext(CartContext);
 
   return (
@@ -98,7 +98,10 @@ export const Cart = () => {
                             <div className="stat place-items-center">
                               <div className="stat-title">Total</div>
                               <div className="stat-value text-secondary">
-                                Falta
+                                $
+                                {cartTotal().toLocaleString("es-IN", {
+                                  minimumFractionDigits: 0
+                                })}
                               </div>
                             </div>
                             <div className="stat place-items-center">
