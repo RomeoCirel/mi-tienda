@@ -43,6 +43,10 @@ const CartProvider = ({ children }) => {
       setCart([...newCart]);
     }
   };
+
+  const cartTotal = () =>
+    cart.reduce((prev, current) => prev + current.subTotal, 0);
+
   return (
     <CartContext.Provider
       value={{
@@ -52,7 +56,8 @@ const CartProvider = ({ children }) => {
         editQuantity,
         deleteOfCart,
         open,
-        setOpen
+        setOpen,
+        cartTotal
       }}
     >
       {children}
