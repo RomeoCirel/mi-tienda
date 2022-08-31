@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CarrucelCardsProduct } from "../components/Productos/CarrucelCardsProduct";
+import { CarrucelCardsProduct } from "../components/CarrucelCardsProduct";
 import { ProductContext } from "../contexts/ProductContext";
 
 export default function Home() {

@@ -11,7 +11,7 @@ import { LayoutPrincipal } from "./layouts/LayoutPrincipal";
 import { RouteProvider } from "./contexts/RouteContext";
 import { ProductProvider } from "./contexts/ProductContext";
 import CartProvider from "./contexts/CartContext";
-import { Cart } from "./components/Productos/Cart";
+import { Cart } from "./components/Cart";
 
 function App() {
   return (
