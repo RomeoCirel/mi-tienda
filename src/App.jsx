@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Ofertas from "./pages/Ofertas";
 import MisCompras from "./pages/MisCompras";
 import Categorias from "./pages/Categorias";
+import ItemCountPage from "./pages/ItemCountPage";
 import { LayoutPrincipal } from "./layouts/LayoutPrincipal";
 import { RouteProvider } from "./contexts/RouteContext";
 import { ProductProvider } from "./contexts/ProductContext";
@@ -27,6 +28,7 @@ function App() {
                 <Route exact path="categorias" element={<Categorias />} />
                 <Route exact path="ofertas" element={<Ofertas />} />
                 <Route exact path="mis-compras" element={<MisCompras />} />
+                <Route exact path="item-count" element={<ItemCountPage />} />
               </Route>
             </Routes>
           </Router>
