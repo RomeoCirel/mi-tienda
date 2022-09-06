@@ -12,7 +12,7 @@ export const LayoutPrincipal = () => {
         <Header sectionName={sectionName} />
       ) : null}
       <div className="bg-stone-400">
-        <div className="container mx-auto shadow-2xl shadow-gray-300 bg-slate-50">
+        <div className="container mx-auto shadow-2xl shadow-gray-300 bg-slate-50 min-h-[74vh]">
           <Outlet />
         </div>
       </div>
