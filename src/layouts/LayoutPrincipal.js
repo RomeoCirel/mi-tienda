@@ -8,11 +8,12 @@ export const LayoutPrincipal = () => {
   const [sectionName] = useContext(RouteContext);
   return (
     <>
-      {sectionName !== null && sectionName !== undefined ? (
-        <Header sectionName={sectionName} />
-      ) : null}
       <div className="bg-stone-400">
         <div className="container mx-auto shadow-2xl shadow-gray-300 bg-slate-50 min-h-[74vh]">
+          {sectionName !== null && sectionName !== undefined ? (
+            <Header sectionName={sectionName} />
+          ) : null}
+          <div className="divider" />
           <Outlet />
         </div>
       </div>
