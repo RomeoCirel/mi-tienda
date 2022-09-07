@@ -4,14 +4,11 @@ import ItemListContainer from "../containers/ItemListContainer";
 
 const ItemCountPage = () => {
   const [, setSectionName] = useContext(RouteContext);
-  setSectionName("Item Count Page");
+  setSectionName("Promise");
   return (
-    <>
-      <div>Item List container</div>
-      <div className="w-1/4 ">
-        <ItemListContainer />
-      </div>
-    </>
+    <div className="flex flex-wrap gap-4 p-4 justify-center">
+      <ItemListContainer />
+    </div>
   );
 };
 

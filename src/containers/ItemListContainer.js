@@ -1,32 +1,24 @@
-import { useState } from "react";
-import ItemCount from "../components/ItemCount";
+import { useState, useEffect } from "react";
+import ItemList from "../components/ItemList";
+import { productos } from "../contexts/ProductContext";
+import { customFetch } from "../services/products-api";
 
 const ItemListContainer = () => {
-  const items = [
-    {
-      stock: 10400,
-      initial: 1
-    },
-    {
-      stock: 104,
-      initial: 2
-    },
-    {
-      stock: 1010,
-      initial: 10
-    },
-    {
-      stock: 100,
-      initial: 1
-    }
-  ];
-  const [itemsList] = useState(items);
-  const onAdd = (qty) => console.log("agregar al carrito", qty);
-  return itemsList.length > 0
-    ? itemsList.map((item) => (
-        <ItemCount initial={item.initial} stock={item.stock} onAdd={onAdd} />
-      ))
-    : "No hay Items Para mostrar";
+  const ok = true;
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    customFetch(2000, productos, ok)
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((error) => console.log(error));
+  }, [products]);
+  return products.length > 0 ? (
+    <ItemList products={products} />
+  ) : (
+    "No hay Items Para mostrar"
+  );
 };
 
 export default ItemListContainer;
