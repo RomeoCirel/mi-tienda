@@ -9,4 +9,4 @@ In the project directory, you can run:
 ### `npm start`
 
 # Example
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/RomeoCirel/mi-tienda/blob/master/navigationExample.gif?raw=true)
