@@ -11,7 +11,6 @@ import profile from "../assets/img/profile.png";
 import { CartContext } from "../contexts/CartContext";
 
 const navigation = [
-  { name: "Categorias", href: "/categorias", current: false },
   { name: "Ofertas", href: "/ofertas", current: false },
   { name: "Mis Compras", href: "/mis-compras", current: false },
   { name: "ItemCount", href: "/item-count", current: false }
