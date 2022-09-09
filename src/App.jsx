@@ -8,6 +8,7 @@ import Ofertas from "./pages/Ofertas";
 import MisCompras from "./pages/MisCompras";
 import Categorias from "./pages/Categorias";
 import ItemCountPage from "./pages/ItemCountPage";
+import ItemDetailContainer from "./containers/ItemDetailContainer";
 import { LayoutPrincipal } from "./layouts/LayoutPrincipal";
 import { RouteProvider } from "./contexts/RouteContext";
 import { ProductProvider } from "./contexts/ProductContext";
@@ -29,6 +30,11 @@ function App() {
                 <Route exact path="ofertas" element={<Ofertas />} />
                 <Route exact path="mis-compras" element={<MisCompras />} />
                 <Route exact path="item-count" element={<ItemCountPage />} />
+                <Route
+                  exact
+                  path="product/detail"
+                  element={<ItemDetailContainer />}
+                />
               </Route>
             </Routes>
           </Router>
