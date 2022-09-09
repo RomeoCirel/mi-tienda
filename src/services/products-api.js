@@ -21,4 +21,24 @@ export const getProduct = (list, id = 101, time = 2000, ok = true) =>
     }
   });
 
-export default { customFetch, getProduct };
+export const getProductsByCategory = (
+  list,
+  categoryId,
+  time = 2000,
+  ok = true
+) =>
+  new Promise((resolve, reject) => {
+    if (ok && list && categoryId) {
+      setTimeout(() => {
+        const product = list.filter((item) => item.categoriId === categoryId);
+        resolve(product);
+      }, time);
+    } else {
+      reject(
+        new Error(
+          "Error al intentar obtener la lista de productos de la categoria solicitada"
+        )
+      );
+    }
+  });
+export default { customFetch, getProduct, getProductsByCategory };

@@ -17,6 +17,29 @@ const navigation = [
   { name: "ItemCount", href: "/item-count", current: false }
 ];
 
+const categorias = [
+  {
+    id: 1,
+    name: "Notebooks"
+  },
+  {
+    id: 2,
+    name: "Componentes PC"
+  },
+  {
+    id: 3,
+    name: "Tablets"
+  },
+  {
+    id: 4,
+    name: "Perifericos"
+  },
+  {
+    id: 5,
+    name: "Redes"
+  }
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -47,8 +70,37 @@ export default function Nav() {
                     </span>
                   </Link>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:block my-auto sm:ml-6">
                   <div className="flex space-x-4">
+                    <Menu as="div" className="ml-3 relative">
+                      <div>
+                        <Menu.Button className="px-4 py-2 text-sm text-gray-100 font-bold">
+                          Categorias
+                        </Menu.Button>
+                      </div>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                          {categorias.map((item) => (
+                            <Menu.Item>
+                              <Link
+                                to={`/categrory/${item.id}`}
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300"
+                              >
+                                {item.name}
+                              </Link>
+                            </Menu.Item>
+                          ))}
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
                     {navigation.map((item) => (
                       <Link
                         key={item.name}

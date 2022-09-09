@@ -14,6 +14,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_678028-MLA46275878652_062021-O.webp",
     inCart: false,
     inFavorites: true,
+    categoriId: 2,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -26,6 +27,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_758476-MLA49500182252_032022-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -38,6 +40,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_858090-MLA43220897090_082020-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -50,6 +53,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_698455-MLA49976265495_052022-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 1,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -62,6 +66,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_926212-MLA50186554835_062022-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 4,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -74,6 +79,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_801112-MLA46516512347_062021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 1,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -86,6 +92,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_922043-MLA46975166576_082021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 3,
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum quod error illo atque iste voluptates fuga ratione, veritatis fugiat, exercitationem hic temporibus eum, molestias nam itaque labore. Ipsam, nemo illum."
   },
@@ -98,6 +105,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_628885-MLA42822340742_072020-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 5,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -111,6 +119,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_684969-MLA47962858193_102021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -124,6 +133,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_957431-MLA47177627550_082021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -137,6 +147,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_839137-MLA46735174616_072021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -150,6 +161,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_936329-MLA48255412231_112021-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -163,6 +175,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_840338-MLA32448766651_102019-O.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false
@@ -176,6 +189,7 @@ export const productos = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_883140-MLA50290561723_062022-F.webp",
     inCart: false,
     inFavorites: false,
+    categoriId: 2,
     inOfert: true,
     percentOff: "25",
     outOfStock: false

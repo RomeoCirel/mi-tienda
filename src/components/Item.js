@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PropTypes } from "prop-types";
 import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { EyeIcon, XCircleIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 
 export const Item = ({
@@ -11,7 +12,8 @@ export const Item = ({
   title,
   description,
   price,
-  stock = 1
+  stock = 1,
+  pathView
 }) => {
   const [showCount, setShowCont] = useState(false);
   const initial = 1;
@@ -40,7 +42,9 @@ export const Item = ({
           {id}-{title}
         </h3>
 
-        {description ? <p className="p-2 text-justify">{description}</p> : null}
+        {description ? (
+          <p className="p-2 text-justify">{description.substring(0, 50)}...</p>
+        ) : null}
         <div className="card-actions grid grid-cols-6 gap-1 bottom-0">
           <div className="font-bold col-span-3">
             ${" "}
@@ -49,12 +53,14 @@ export const Item = ({
             })}
           </div>
           <div>
-            <button
-              type="button"
-              className="btn btn-circle btn-link btn-sm border-none transparent"
-            >
-              <EyeIcon className="h-5 w-5 text-gray-400 hover:text-blue-500" />
-            </button>
+            <Link to={`${pathView}/${id}`}>
+              <button
+                type="button"
+                className="btn btn-circle btn-link btn-sm border-none transparent"
+              >
+                <EyeIcon className="h-5 w-5 text-gray-400 hover:text-blue-500" />
+              </button>
+            </Link>
           </div>
           <div>
             <button
@@ -97,7 +103,8 @@ Item.propTypes = {
   id: PropTypes.number.isRequired,
   pictureUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired,
+  pathView: PropTypes.string.isRequired
 };
 
 export default Item;

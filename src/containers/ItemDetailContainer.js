@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { ShieldExclamationIcon } from "@heroicons/react/24/outline";
+import { useParams } from "react-router-dom";
 import ItemDetail from "../components/ItemDetail";
 import { getProduct } from "../services/products-api";
 import { productos } from "../contexts/ProductContext";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
+  const { id } = useParams();
   useEffect(() => {
-    getProduct(productos, 109)
+    getProduct(productos, parseInt(id, 10))
       .then((res) => {
         setItem(res);
       })
       .catch((error) => console.log(error));
-  }, []);
-  console.log(item);
+  }, [id]);
   return (
     <div>
       {item ? (

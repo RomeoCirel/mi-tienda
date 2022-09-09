@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 import { Item } from "./Item";
 
-const ItemList = ({ products }) =>
+const ItemList = ({ products, path }) =>
   products.length > 0
     ? products.map((product) => (
         <Item
@@ -12,6 +12,7 @@ const ItemList = ({ products }) =>
           description={product.description}
           price={product.price}
           stock={product.stock}
+          pathView={path}
         />
       ))
     : "Sin Items";
@@ -25,6 +26,7 @@ ItemList.propTypes = {
       price: PropTypes.number,
       stock: PropTypes.number
     })
-  ).isRequired
+  ).isRequired,
+  path: PropTypes.string.isRequired
 };
 export default ItemList;
