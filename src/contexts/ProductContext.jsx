@@ -9,7 +9,7 @@ export const productos = [
     id: 100,
     name: "Motherboard Gigabytes x570 Aorus Ultra",
     price: 67999,
-    stock: 10,
+    stock: 0,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_678028-MLA46275878652_062021-O.webp",
     inCart: false,

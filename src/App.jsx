@@ -15,6 +15,7 @@ import { RouteProvider } from "./contexts/RouteContext";
 import { ProductProvider } from "./contexts/ProductContext";
 import CartProvider from "./contexts/CartContext";
 import { Cart } from "./components/Cart";
+import CartView from "./pages/CartView";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                   path="categrory/:id"
                   element={<CategoryProduct />}
                 />
+                <Route exact path="cart" element={<CartView />} />
               </Route>
             </Routes>
           </Router>

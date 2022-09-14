@@ -8,6 +8,7 @@ import { productos } from "../contexts/ProductContext";
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const { id } = useParams();
+  const addToCart = (detail) => console.log(detail);
   useEffect(() => {
     getProduct(productos, parseInt(id, 10))
       .then((res) => {
@@ -18,7 +19,7 @@ const ItemDetailContainer = () => {
   return (
     <div>
       {item ? (
-        <ItemDetail item={item} />
+        <ItemDetail item={item} addToCart={addToCart} />
       ) : (
         <div className="px-auto">
           <ShieldExclamationIcon className="w-1/4 mx-auto" />
